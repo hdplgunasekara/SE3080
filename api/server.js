@@ -30,6 +30,10 @@ connection.once("open",()=>{
 
 //add routes here
 
+const articleRoutes = require("./src/api/routes/article.routes");
+
+app.use("/article",articleRoutes);
+
 app.listen(PORT,()=>{
     console.log(`Server is up and running on port ${PORT}`);
 })
