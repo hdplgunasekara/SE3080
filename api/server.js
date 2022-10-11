@@ -31,8 +31,11 @@ connection.once("open",()=>{
 //add routes here
 
 const articleRoutes = require("./src/api/routes/article.routes");
+const publisherRoutes = require("./src/api/routes/publisher.routes");
 
 app.use("/article",articleRoutes);
+app.use("/api/publisher",publisherRoutes);
+
 
 app.listen(PORT,()=>{
     console.log(`Server is up and running on port ${PORT}`);
