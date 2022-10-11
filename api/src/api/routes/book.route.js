@@ -31,4 +31,21 @@ router.post("/addbook", async(req, res) => {
     
 });
 
+//UPDATE BOOK
+router.put("/updatebook/:id",async(req, res) => {
+    try{
+        // console.log("123");
+              await book.findOneAndUpdate({'bookID':req.params.id},
+          {
+            $set: req.body
+          },
+          {new:true}
+        );
+        res.status(200).json("Book details updated");
+        
+      } catch (err) {
+        res.status(500).json(err);
+      }
+    })
+
 module.exports = router;
