@@ -48,4 +48,36 @@ router.put("/updatebook/:id",async(req, res) => {
       }
     })
 
+//DELETE BOOK
+router.delete("/deletebook/:id", async(req, res) => {
+    try {
+            await book.findOneAndDelete({'bookID':req.params.id});
+            res.status(200).json("Book has been deleted");
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  })
+
+
+//GET BOOK
+router.get("/:id", async(req, res) => {
+    try {
+        const books = await book.findOne({'bookID':req.params.id});
+        res.status(200).json(books);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+//GET ALL
+router.get("/", async(req, res) => {
+    try {
+        const books = await book.find();
+        res.status(200).json(books);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+
 module.exports = router;
