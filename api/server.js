@@ -32,9 +32,12 @@ connection.once("open",()=>{
 
 const articleRoutes = require("./src/api/routes/article.routes");
 const publisherRoutes = require("./src/api/routes/publisher.routes");
+const bookRoutes = require("./src/api/routes/book.route");
+
 
 app.use("/article",articleRoutes);
 app.use("/api/publisher",publisherRoutes);
+app.use("/api/book",bookRoutes);
 
 
 app.listen(PORT,()=>{
