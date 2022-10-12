@@ -1,0 +1,22 @@
+import React from "react";
+
+const topNav = () => {
+  function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  }
+
+  return (
+    <div class="topnav" id="myTopnav">
+      <a href="#home" class="active">
+        Online Library
+      </a>
+    </div>
+  );
+};
+
+export default topNav;
