@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SideNav from "../../../components/admin/sideNav";
 import TopNav from "../../../components/admin/topNav";
-// import DelBookModal from '../../../components/modals/bookmodal/DelBookModal';
-// import UpdBookModal from '../../../components/modals/bookmodal/UpdBookModal';
+import UpdBookModal from "../../../components/modals/bookmodals/UpdBookModal";
+import DelBookModal from "../../../components/modals/bookmodals/DelBookModal";
 
 export default function ViewBooks() {
   const [book, setbook] = useState([]);
@@ -36,7 +36,7 @@ export default function ViewBooks() {
                 <th scope="col">Author</th>
                 <th scope="col">Category</th>
                 <th scope="col">Publisher</th>
-                {/* <th className="text-center" scope="col">Action</th> */}
+                <th className="text-center" scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -47,10 +47,10 @@ export default function ViewBooks() {
                   <td>{bk.bkAuthor}</td>
                   <td>{bk.bkCategory}</td>
                   <td>{bk.bkPublisher}</td>
-                  {/* <td className="text-center">
+                  <td className="text-center">
                     <UpdBookModal bkid={bk.bookID} />
                     <DelBookModal bkid={bk.bookID} />
-                  </td> */}
+                  </td>
                 </tr>
               ))}
             </tbody>
