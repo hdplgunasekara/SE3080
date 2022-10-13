@@ -6,6 +6,7 @@ import ViewBooks from "./pages/book/admin/ViewBooks";
 //pasindu 
 import ArticleList from "../src/pages/article/user/ArticleList";
 import AddArticle from "../src/pages/article/user/AddArticle";
+import ArticleSearch from "../src/pages/article/user/ArticleSearch";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           {/* Pasindu  */}      
         <Route exact path="/article/list" element={<ArticleList />} />
         <Route exact path="/article/add" element={<AddArticle />} />
+        <Route exact path="/article/search/:id" element={<ArticleSearch />} />
 
         </Routes>
       </BrowserRouter>

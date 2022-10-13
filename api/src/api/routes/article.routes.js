@@ -76,8 +76,41 @@ router.get("/list",async (req, res) => {
         
         const limit = parseInt(size);
         const skip = (page-1)*size;
-        // const count=  await Note.find({status : 'Active', userid:userid}).count();
+        
         const articles = await Article.find().limit(limit).skip(skip);
+        
+        res.json(articles)
+        
+
+
+	} catch (error) {
+		res.sendStatus(500).send({ message: "Internal Server Error" });
+	}
+});
+
+
+//fetch article end
+
+//search article start
+
+router.get("/search",async (req, res) => {
+    var search = new RegExp(req.query.search);
+    
+
+    try {
+		
+        let {page, size}=req.query
+        if(!page){
+            page=1;
+        }
+        if(!size){
+            size=3;
+        }
+        
+        const limit = parseInt(size);
+        const skip = (page-1)*size;
+        // const count=  await Note.find({status : 'Active', userid:userid}).count();
+        const articles = await Article.find({title: search}).limit(limit).skip(skip);
         
         res.json(articles)
 
@@ -87,7 +120,7 @@ router.get("/list",async (req, res) => {
 	}
 });
 
-//fetch article end
+//searc article end
 
 //update article start
 

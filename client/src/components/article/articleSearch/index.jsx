@@ -8,7 +8,7 @@ import Articlemodal from '../../modals/articlemodals/articleModel'
 import swal from 'sweetalert'
 import axios from 'axios';
 import { LoadingOverlay } from '@mantine/core';
-import { Navigate } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 const ArticleList= ()=>{
     const [items,setItems]= useState([]);
@@ -16,20 +16,36 @@ const ArticleList= ()=>{
     const [count , setCount]=useState(0);
     const [isLoading, setIsLoading] = useState(false);
     const [search , setSearch]=useState();
+    const param = useParams();
+
     
 
     useEffect(()=>{
-
+      
        
         const getArticles = async()=>{
             setIsLoading(true);
         const res= await fetch(
-            'http://127.0.0.1:8090/article/list' );
+            `http://127.0.0.1:8090/article/search?search=${param.id}` );
         const data = await res.json();
+
+        if(data.length===0){
+            swal({
+                title: "No Result Found",
+                icon: 'error',
+                timer: 2000,
+                button: false,
+              }).then(()=>{
+                window.location.href=`/article/list`;
+              })
+
+
+        }else{
         setpageCount(5);
         setItems(data);
         setCount(data.length)
         setIsLoading(false)
+        }
         
         };
 
