@@ -1,0 +1,66 @@
+body {font-family: "Lato", sans-serif;}
+
+.layout {
+    display: flex;
+}
+.sidebar {
+  height: 90vh;
+  width: 300px;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 16px;
+}
+
+.sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #cccccc;
+  display: block;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.pro-container{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+.pro-name{
+    color: white;
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+.propic{
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin-left: 10px;
+}
+
+.main {
+
+  padding: 0px 10px;
+}
+
+.menu{
+    margin-top: 50px;
+}
+
+.item{
+    margin-bottom: 10px;
+}
+
+
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}

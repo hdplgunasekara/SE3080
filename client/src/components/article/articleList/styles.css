@@ -1,0 +1,79 @@
+
+
+.heading{
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 30%;
+  margin-right: auto;
+  
+  
+}
+
+
+
+.card-deck{
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: 10px;
+    margin-left: 30px;
+
+    text-align: center;
+    font-family: arial;
+    align-items: center;
+    
+  }
+
+  .card h1{
+    font-size: 25px;
+    font-style: bold;
+  }
+  
+  .price {
+    color: grey;
+    font-size: 22px;
+  }
+  
+  .button-group{
+    display: inline;
+  
+  }
+
+  .btn{
+    margin-left: 5px;
+    margin-bottom: 10px;
+  }
+
+  .thumb-img{
+    height: 190px;
+    width: 250px;
+    border-radius: 10px;
+    margin: 5px;
+  }
+  
+  .Search-container{
+    width: 300px;
+    margin-top: 50px;
+    margin-left: 30px;
+
+  }
+
+  .paginator{
+    position: fixed;
+    margin-left: 25%;
+  }
+
+  @media screen and (max-width: 1500px) {
+    .paginator {
+      position: absolute;
+      margin-bottom: 0%;
+      
+    }
+  }
+  
