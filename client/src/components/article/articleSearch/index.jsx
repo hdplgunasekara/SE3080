@@ -58,7 +58,7 @@ const ArticleList= ()=>{
         const fetchArticles = async  (currentPage)=>{ 
             setIsLoading(true)
             const res = await fetch(
-                `http://127.0.0.1:8090/article/list?page=${currentPage}&limit=1`);
+                `http://127.0.0.1:8090/article/search?page=${currentPage}&limit=1&search=${param.id}`);
             const data = await res.json();
             setIsLoading(false)
             return data;
