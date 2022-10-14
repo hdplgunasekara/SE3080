@@ -33,12 +33,14 @@ connection.once("open",()=>{
 const articleRoutes = require("./src/api/routes/article.routes");
 const publisherRoutes = require("./src/api/routes/publisher.routes");
 const bookRoutes = require("./src/api/routes/book.route");
-
+const userAuthRoutes= require("./src/api/routes/userAuth.routes");
+const userRoutes= require("./src/api/routes/user.routes");
 
 app.use("/article",articleRoutes);
 app.use("/api/publisher",publisherRoutes);
 app.use("/api/book",bookRoutes);
-
+app.use("/api/userAuth",userAuthRoutes);
+app.use("/api/user",userRoutes);
 
 app.listen(PORT,()=>{
     console.log(`Server is up and running on port ${PORT}`);

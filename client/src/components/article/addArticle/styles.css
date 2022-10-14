@@ -1,0 +1,22 @@
+
+.main-container{
+    position: absolute;
+    left: 60%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+
+.form-control{
+    width: 500px;
+}
+
+.wd{
+    height: 100px;
+}
+
+.button-container{
+    display: inline;
+    
+}
