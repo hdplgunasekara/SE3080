@@ -78,7 +78,7 @@ router.get("/", async (req, res) => {
 //GET BOOK ACCORDING TO CATEGORY
 router.get("/grbk/:bkCategory", async (req, res) => {
   try {
-    const books = await book.find({'bkCategory':req.params.bkCategory});
+    const books = await book.find({ bkCategory: req.params.bkCategory });
     res.status(200).json(books);
   } catch (err) {
     return res.status(500).json(err);
