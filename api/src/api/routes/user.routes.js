@@ -4,7 +4,7 @@ const user = require("../models/user");
 const auth = require('../../../middleware/auth');
 
 //GET USER
-router.get("/:user_id",auth, async (req, res) => {
+router.get("/:user_id", async (req, res) => {
   try {
     const users = await user.findOne({'user_id':req.params.user_id});
     const { password, ...others } = users._doc;
@@ -15,7 +15,7 @@ router.get("/:user_id",auth, async (req, res) => {
 });
 
 //GET ALL USERS
-router.get("/",auth, async (req, res) => {
+router.get("/", async (req, res) => {
   const user_id = req.query.user_id;
   try {
     let users;
@@ -57,7 +57,6 @@ router.delete("/deleteuser/:id", async(req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 
 module.exports = router;
