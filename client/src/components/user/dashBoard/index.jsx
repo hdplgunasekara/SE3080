@@ -9,7 +9,7 @@ const Dashboard= ()=>{
 return(
 <>
      
-<div className="container-fluid">
+<div className="container-fluid row-user">
                 <div className="row">
                     <div className="col-md-4"></div>
                     <div className="col-md-8">
