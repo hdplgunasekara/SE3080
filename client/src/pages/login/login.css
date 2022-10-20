@@ -1,6 +1,11 @@
-@media (min-width: 1025px) {
-  .h-custom-2 {
-    height: 100%;
-    }
+.rounded-t-5 {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+@media (max-width: 550px) {
+  .rounded-tr-lg-0 {
+    border-top-right-radius: 0.5rem;
+    border-bottom-left-radius: 0rem;
   }
- 
+}

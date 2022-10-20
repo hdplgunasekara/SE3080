@@ -1,14 +1,24 @@
-import React from "react";
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
-import { useRef } from "react";
 import axios from "axios";
+import React, { useRef } from "react";
+import swal from "sweetalert";
 import "./login.css";
-import { MDBContainer, MDBRow, MDBCol, MDBIcon } from "mdb-react-ui-kit";
-// import Logo from "../../images/Group 1.png";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  MDBBtn,
+  MDBContainer,
+  MDBCard,
+  MDBCardBody,
+  MDBCardImage,
+  MDBRow,
+  MDBCol,
+  MDBInput,
+} from "mdb-react-ui-kit";
 
 function Login() {
   const userRef = useRef();
   const passwordRef = useRef();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,88 +31,78 @@ function Login() {
         }
       );
       localStorage.setItem("accesstoken", res.data.accesstoken);
-      alert("sucess");
+      localStorage.setItem("id", res.data.id);
+      swal({
+        title: "Success!",
+        text: "Login Successfull !",
+        icon: "success",
+        timer: 2000,
+        button: false,
+      });
+      navigate("/dash", {
+        state: {
+          id: res.data._id,
+        },
+      });
     } catch (err) {
-      alert("0000");
+      swal({
+        title: "Warning!",
+        text: "Login Unsuccessfull !",
+        icon: "error",
+        timer: 2000,
+        button: false,
+      });
     }
   };
   return (
-    <MDBContainer fluid>
-      <MDBRow>
-        <MDBCol sm="6">
-          <div className="d-flex flex-row ps-8 pt-4">
-            <img
-              // src={Logo}
-              alt="image"
-              style={{ height: "75px", width: "75px" }}
-            ></img>
-            <MDBIcon fas icon="crow fa-3x me-4" style={{ color: "#709085" }} />
-            <span className="h1 fw-bold mb-0">
-              <strong>Welcome !</strong>
-            </span>
-          </div>
+    <MDBContainer className="my-5">
+      <MDBCard>
+        <MDBRow className="g-0 d-flex align-items-center">
+          <MDBCol md="4">
+            <MDBCardImage
+              src="https://images.unsplash.com/photo-1614849963640-9cc74b2a826f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+              alt="library"
+              className="rounded-t-5 rounded-tr-lg-0"
+              fluid
+            />
+          </MDBCol>
 
-          <div className="d-flex flex-column justify-content-center  h-custom-2 w-75 pt-0">
-            <h3
-              className="fw-normal mb-3 ps-4 pb-3"
-              style={{ letterSpacing: "2px" }}
-            >
-              Login
-            </h3>
-
-            <form className="loginForm" onSubmit={handleSubmit}>
-              <div className="form group">
-                <label for=""> Username </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="formControlLg"
-                  placeholder="Enter your username"
-                  ref={userRef}
-                />
-              </div>
-              <div className="form group">
-                <label for=""> Password </label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="formControlLg"
-                  placeholder="Enter your password"
-                  ref={passwordRef}
-                />
-              </div>
-              <p className="small mb-4 pb-lg-3 ms-5">
-                <a className="text-mute" href="#!">
-                  Forgot password?
-                </a>
-              </p>
-              <input
-                type="submit"
-                value="Login"
-                className="btn btn-primary btn-rounded"
-                role="button"
-                style={{ width: "100%" }}
+          <MDBCol md="8">
+            <MDBCardBody>
+              <h2>Login Now</h2>
+              <br></br>
+              <MDBInput
+                wrapperClass="mb-4"
+                label="Username"
+                id="form1"
+                type="text"
+                ref={userRef}
               />
-            </form>
+              <MDBInput
+                wrapperClass="mb-4"
+                label="Password"
+                id="form2"
+                type="password"
+                ref={passwordRef}
+              />
+              <hr />
+              <p className="bottm">
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  to="/register"
+                >
+                  Get Registered
+                </Link>
+              </p>
 
-            <p className="ms-5">
-              Don't have an account?{" "}
-              <a href="/register" className="link-primary">
-                Register here
-              </a>
-            </p>
-          </div>
-        </MDBCol>
-
-        <MDBCol sm="6" className="d-none d-sm-block px-0">
-          <img
-            src="https://images.unsplash.com/photo-1580537659466-0a9bfa916a54?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
-            alt="Login image"
-            className="w-100"
-            style={{ objectFit: "cover", objectPosition: "left" }}
-          />
-        </MDBCol>
-      </MDBRow>
+              <MDBBtn className="mb-4 w-100" onClick={handleSubmit}>
+                Sign in
+              </MDBBtn>
+            </MDBCardBody>
+          </MDBCol>
+        </MDBRow>
+      </MDBCard>
     </MDBContainer>
   );
 }

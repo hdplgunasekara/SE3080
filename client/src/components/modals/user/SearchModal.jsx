@@ -7,8 +7,6 @@ import swal from "sweetalert";
 
 export default function SearchModal(props) {
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const [user, setUser] = useState([]);
 
   useEffect(() => {

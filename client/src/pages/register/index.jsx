@@ -1,5 +1,4 @@
 import React from "react";
-import { Col, Row, Form } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
@@ -7,9 +6,12 @@ import { useNavigate } from "react-router-dom";
 import {
   MDBBtn,
   MDBContainer,
+  MDBRow,
+  MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBCheckbox,
+  MDBInput,
+  MDBRadio,
 } from "mdb-react-ui-kit";
 
 function Register() {
@@ -21,8 +23,6 @@ function Register() {
   const [email_address, setEmail] = useState("");
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [profile_pic, setProfilepic] = useState("");
-  const [file, setFile] = useState(null);
   const navigate = useNavigate();
 
   const UserData = {
@@ -34,54 +34,40 @@ function Register() {
     phone_number,
     username,
     password,
-    profile_pic,
   };
-  if (file) {
-    const data = new FormData();
-    const filename = Date.now() + file.name;
-    data.append("name", filename);
-    data.append("file", file);
-    UserData.profile_pic = filename;
-    try {
-      axios.post("/upload", data);
-    } catch (err) {}
-  }
 
   function submitForm(e) {
     e.preventDefault();
-      console.log(UserData);
-      axios
-        .post("http://localhost:8090/api/userAuth/register", UserData)
-        .then(function (response) {
-          console.log(response);
-          setname("");
-          setDob("");
-          setGender("");
-          setNumber("");
-          setAddress("");
-          setEmail("");
-          setUserName("");
-          setPassword("");
-          setProfilepic("");
-          swal({
-            text: "Successfully Added !",
-            icon: "success",
-            button: "Okay!",
-          }).then((result) => {
-              navigate("/login");
-          });
-        })
-        .catch(function (error) {
-          console.log(error);
-          swal({
-            text: "Oops!Check And Retry!",
-            icon: "error",
-            button: "Okay!",
-          });
+    console.log(UserData);
+    axios
+      .post("http://localhost:8090/api/userAuth/register", UserData)
+      .then(function (response) {
+        console.log(response);
+        setname("");
+        setDob("");
+        setGender("");
+        setNumber("");
+        setAddress("");
+        setEmail("");
+        setUserName("");
+        setPassword("");
+        swal({
+          text: "Successfully Added !",
+          icon: "success",
+          button: "Okay!",
+        }).then((result) => {
+          navigate("/login");
         });
-    
+      })
+      .catch(function (error) {
+        console.log(error);
+        swal({
+          text: "Oops!Check And Retry!",
+          icon: "error",
+          button: "Okay!",
+        });
+      });
   }
-
   return (
     <MDBContainer
       fluid
@@ -93,153 +79,81 @@ function Register() {
         height: "100vh",
       }}
     >
-      <MDBCard className="m-4" style={{ maxWidth: "1500px" }}>
-        <MDBCardBody className="px-5">
-          <h2 className="text-uppercase text-center mb-4">Register</h2>
-          <Form onSubmit={submitForm}>
-            <Form.Group as={Row} className="mb-2">
-              <Form.Label column sm="3">
-                Upload Image
-              </Form.Label>
-              <Col sm="7">
-                <Form.Control
-                  type="file"
-                  id="fileInput"
-                  onChange={(e) => setFile(e.target.files[0])}
-                  required
-                />
-              </Col>
-            </Form.Group>
+      <MDBRow className="justify-content-center align-items-center m-5">
+        <MDBCard>
+          <MDBCardBody className="px-4">
+            <h3 className="fw-bold mb-4 pb-2 pb-md-0 mb-md-5">
+              Registration Form
+            </h3>
 
-            <Form.Group
-              as={Row}
-              className="mb-2"
-              controlId="formPlaintextEmail"
-            >
-              <Form.Label column sm="3">
-                Full Name
-              </Form.Label>
-              <Col sm="7">
-                <Form.Control
+            <MDBRow>
+              <MDBCol md="6">
+                <MDBInput
+                  wrapperClass="mb-4"
+                  label="First Name"
+                  size="lg"
+                  id="form1"
                   type="text"
                   placeholder="Enter your full name "
                   value={name}
                   onChange={(e) => {
                     setname(e.target.value);
                   }}
-                  required
                 />
-              </Col>
-            </Form.Group>
+              </MDBCol>
 
-            <Form>
-              {["radio"].map((type) => (
-                <div key={`inline-${type}`} className="mb-2">
-                  <Form.Label
-                    as="legend"
-                    className="align-items-left "
-                    column
-                    sm={3}
-                  >
-                    Gender
-                  </Form.Label>
-                  <Form.Check
-                    inline
-                    label="Male"
-                    name="group1"
-                    type={type}
-                    id={`inline-${type}-1`}
-                    value="Male"
-                    onChange={(e) => {
-                      setGender(e.target.value);
-                    }}
-                  />
-                  <Form.Check
-                    inline
-                    label="Female"
-                    name="group1"
-                    type={type}
-                    id={`inline-${type}-2`}
-                    value="Female"
-                    onChange={(e) => {
-                      setGender(e.target.value);
-                    }}
-                  />
-                </div>
-              ))}
-            </Form>
-
-            <Form.Group
-              as={Row}
-              className="mb-2"
-              controlId="formPlaintextPassword"
-            >
-              <Form.Label column sm="3">
-                Date Of Birth
-              </Form.Label>
-              <Col sm="7">
-                <Form.Control
+              <MDBCol md="6">
+                <MDBInput
+                  wrapperClass="mb-4"
+                  label="Date"
+                  size="lg"
+                  id="form4"
                   type="date"
                   value={dob}
                   onChange={(e) => {
                     setDob(e.target.value);
                   }}
-                  required
                 />
-              </Col>
-            </Form.Group>
+              </MDBCol>
+            </MDBRow>
 
-            <Form.Group
-              as={Row}
-              className="mb-2"
-              controlId="formPlaintextPassword"
-            >
-              <Form.Label column sm="3">
-                Email Address
-              </Form.Label>
-              <Col sm="7">
-                <Form.Control
-                  type="Email"
-                  placeholder="Enter your email address"
+            <MDBRow>
+              <MDBCol md="6">
+                <MDBInput
+                  wrapperClass="mb-4"
+                  label="Enter Address"
+                  size="lg"
+                  id="form1"
+                  type="text"
+                  value={address}
+                  onChange={(e) => {
+                    setAddress(e.target.value);
+                  }}
+                />
+              </MDBCol>
+
+              <MDBCol md="6">
+                <MDBInput
+                  wrapperClass="mb-4"
+                  label="Enter Email"
+                  size="lg"
+                  id="form4"
+                  type="email"
                   value={email_address}
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
                 />
-              </Col>
-            </Form.Group>
+              </MDBCol>
+            </MDBRow>
 
-            <Form.Group
-              as={Row}
-              className="mb-2"
-              controlId="formPlaintextEmail"
-            >
-              <Form.Label column sm="3">
-                Address
-              </Form.Label>
-              <Col sm="7">
-                <Form.Control
-                  type="textarea"
-                  placeholder="Enter your address "
-                  value={address}
-                  onChange={(e) => {
-                    setAddress(e.target.value);
-                  }}
-                  required
-                />
-              </Col>
-            </Form.Group>
-
-            <Form.Group
-              as={Row}
-              className="mb-2"
-              controlId="formPlaintextPassword"
-            >
-              <Form.Label column sm="3">
-                Phone Number
-              </Form.Label>
-              <Col sm="7">
-                <Form.Control
+            <MDBRow>
+              <MDBCol md="6">
+                <MDBInput
+                  wrapperClass="mb-4"
+                  label="Phone Number"
+                  size="lg"
+                  id="form5"
                   type="tel"
                   placeholder="+94777123456"
                   maxLength="12"
@@ -247,68 +161,70 @@ function Register() {
                   onChange={(e) => {
                     setNumber(e.target.value);
                   }}
-                  required
                 />
-              </Col>
-            </Form.Group>
-            <Form.Group
-              as={Row}
-              className="mb-2"
-              controlId="formPlaintextEmail"
-            >
-              <Form.Label column sm="3">
-                Username
-              </Form.Label>
-              <Col sm="7">
-                <Form.Control
+              </MDBCol>
+
+              <MDBCol md="6" className="mb-4">
+                <h6 className="fw-bold">Gender: </h6>
+                <MDBRadio
+                  name="inlineRadio"
+                  id="inlineRadio2"
+                  value="Male"
+                  label="Male"
+                  inline
+                  onChange={(e) => {
+                    setGender(e.target.value);
+                  }}
+                />
+                <MDBRadio
+                  name="inlineRadio"
+                  id="inlineRadio3"
+                  value="Female"
+                  label="Female"
+                  inline
+                  onChange={(e) => {
+                    setGender(e.target.value);
+                  }}
+                />
+
+              </MDBCol>
+            </MDBRow>
+
+            <MDBRow>
+              <MDBCol md="6">
+                <MDBInput
+                  wrapperClass="mb-4"
+                  label="Enter A Username"
+                  size="lg"
+                  id="form4"
                   type="text"
-                  placeholder="Enter a username"
                   value={username}
                   onChange={(e) => {
                     setUserName(e.target.value);
                   }}
-                  required
                 />
-              </Col>
-            </Form.Group>
-            <Form.Group
-              as={Row}
-              className="mb-2"
-              controlId="formPlaintextEmail"
-            >
-              <Form.Label column sm="3">
-                Password
-              </Form.Label>
-              <Col sm="7">
-                <Form.Control
+              </MDBCol>
+              <MDBCol md="6">
+                <MDBInput
+                  wrapperClass="mb-4"
+                  label="Enter A Password"
+                  size="lg"
+                  id="form4"
                   type="password"
-                  placeholder="Enter a password"
                   value={password}
                   onChange={(e) => {
                     setPassword(e.target.value);
                   }}
-                  required
                 />
-              </Col>
-            </Form.Group>
+              </MDBCol>
+            </MDBRow>
 
-            <div className="d-flex flex-row justify-content-center mb-4">
-              <MDBCheckbox
-                name="flexCheck"
-                id="flexCheckDefault"
-                label="I agree all statements in Terms of service"
-              />
-            </div>
-            <MDBBtn
-              type="submit"
-              className="mb-3 w-100 gradient-custom-4"
-              size="lg"
-            >
-              Register
+            <MDBBtn className="mb-4" size="lg" onClick={submitForm}>
+              Submit
             </MDBBtn>
-          </Form>
-        </MDBCardBody>
-      </MDBCard>
+          </MDBCardBody>
+        </MDBCard>
+      </MDBRow>
     </MDBContainer>
   );
 }
