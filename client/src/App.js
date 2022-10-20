@@ -8,11 +8,6 @@ import ArticleList from "../src/pages/article/user/ArticleList";
 import AddArticle from "../src/pages/article/user/AddArticle";
 import ArticleSearch from "../src/pages/article/user/ArticleSearch";
 
-import Home from "./pages/home";
-import Login from "./pages/login";
-import Register from "./pages/register";
-import ViewUsers from "./pages/user/admin/ViewUsers";
-import UserDashboard from "./pages/user/admin/UserDashboard";
 
 function App() {
   return (
@@ -29,14 +24,6 @@ function App() {
         <Route exact path="/article/list" element={<ArticleList />} />
         <Route exact path="/article/add" element={<AddArticle />} />
         <Route exact path="/article/search/:id" element={<ArticleSearch />} />
-          <Route path="/bookdash" element={<BookDashboard/>} />
-          <Route path="/viewbook" element={<ViewBooks/>} />
-          {/* Aathif */}
-          <Route path="/home" element={<Home/>} />
-          <Route path="/login" element={<Login/>} />
-          <Route path="/register" element={<Register/>} />
-          <Route path="/userdash" element={<UserDashboard/>} />
-          <Route path="/viewuser" element={<ViewUsers/>} />
 
         </Routes>
       </BrowserRouter>
