@@ -77,7 +77,7 @@ router.get("/list",async (req, res) => {
         const limit = parseInt(size);
         const skip = (page-1)*size;
         
-        const articles = await Article.find().limit(limit).skip(skip);
+        const articles = await Article.find({status:''}).limit(limit).skip(skip);
         
         res.json(articles)
         

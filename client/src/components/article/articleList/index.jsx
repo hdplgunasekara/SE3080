@@ -4,7 +4,7 @@ import '../articleList/styles.css'
 import ReactPaginate from 'react-paginate';
 import { useEffect,useState } from "react";
 import Articlemodal from '../../modals/articlemodals/articleModel'
-// import ArticleUpdatemodal from '../../../components/model/articleUpdateModel'
+import ArticleUpdatemodal from '../../modals/articlemodals/articleUpdateModel'
 import swal from 'sweetalert'
 import axios from 'axios';
 import { LoadingOverlay } from '@mantine/core';
@@ -120,10 +120,10 @@ return(
 <div class="card">
 <img className="thumb-img" src={article.image} />
 <h1>{article.title.toString().substring(0,50)}</h1>
-<p>{article.description.toString().substring(0,50)}</p>
+<h6>{article.description.toString().substring(0,50)}</h6>
 <div className="buuton-group"> 
     <Articlemodal title={article.title} description={article.description} id={article._id} image={article.image} data={article.createdAt}/>  
-    {/* <ArticleUpdatemodal title={article.title} description={article.description} id={article._id} image={article.image} />                              */}
+    <ArticleUpdatemodal title={article.title} description={article.description} id={article._id} image={article.image} />                             
     <button type="button" class="btn btn-danger" onClick={() => { articleDelete(article._id) }}>Delete</button>
     </div>
 </div>
