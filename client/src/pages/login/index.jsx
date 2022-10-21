@@ -15,7 +15,7 @@ import {
   MDBInput,
 } from "mdb-react-ui-kit";
 
-function Login() {
+export default function Login() {
   const userRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
@@ -30,7 +30,6 @@ function Login() {
           password: passwordRef.current.value,
         }
       );
-      localStorage.setItem("accesstoken", res.data.accesstoken);
       localStorage.setItem("id", res.data.id);
       swal({
         title: "Success!",
@@ -45,6 +44,7 @@ function Login() {
         },
       });
     } catch (err) {
+      console.log(err)
       swal({
         title: "Warning!",
         text: "Login Unsuccessfull !",
@@ -71,12 +71,34 @@ function Login() {
             <MDBCardBody>
               <h2>Login Now</h2>
               <br></br>
-              <MDBInput
+              <div className="regui">
+              <div className="name">
+                <label>Username</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="formControlLg"
+                  placeholder="Enter your username"
+                  ref={userRef}
+                ></input>
+              </div>
+              <div className="name">
+                <label>Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="formControlLg"
+                  placeholder="Enter your password"
+                  ref={passwordRef}
+                ></input>
+              </div>
+            </div>
+              {/* <MDBInput
                 wrapperClass="mb-4"
                 label="Username"
                 id="form1"
                 type="text"
-                ref={userRef}
+                refs={userRef}
               />
               <MDBInput
                 wrapperClass="mb-4"
@@ -84,7 +106,7 @@ function Login() {
                 id="form2"
                 type="password"
                 ref={passwordRef}
-              />
+              /> */}
               <hr />
               <p className="bottm">
                 <Link
@@ -106,5 +128,3 @@ function Login() {
     </MDBContainer>
   );
 }
-
-export default Login;

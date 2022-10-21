@@ -36,11 +36,7 @@ const Search = (props) => {
       </div>
       <Modal show={show} size="lg" centered>
         <SearchModal user={user} />
-        <Modal.Footer>
-          <Button variant="danger" onClick={handleClose}>
-            Exit
-          </Button>
-        </Modal.Footer>
+
       </Modal>
     </div>
   );
