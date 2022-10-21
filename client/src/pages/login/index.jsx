@@ -16,6 +16,45 @@ import {
 } from "mdb-react-ui-kit";
 
 export default function Login() {
+  // const userRef = useRef();
+  // const passwordRef = useRef();
+  // const navigate = useNavigate();
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const res = await axios.post(
+  //       `http://localhost:8090/api/userAuth/login/`,
+  //       {
+  //         username: userRef.current.value,
+  //         password: passwordRef.current.value,
+  //       }
+  //     );
+  //     localStorage.setItem("accesstoken", res.data.accesstoken);
+  //     localStorage.setItem("id", res.data.id);
+  //     swal({
+  //       title: "Success!",
+  //       text: "Login Successfull !",
+  //       icon: "success",
+  //       timer: 2000,
+  //       button: false,
+  //     });
+  //     navigate("/dash", {
+  //       state: {
+  //         id: res.data._id,
+  //       },
+  //     });
+  //   } catch (err) {
+  //     console.log(err);
+  //     swal({
+  //       title: "Warning!",
+  //       text: "Login Unsuccessfull !",
+  //       icon: "error",
+  //       timer: 2000,
+  //       button: false,
+  //     });
+  //   }
+  // };
   const userRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
@@ -30,6 +69,7 @@ export default function Login() {
           password: passwordRef.current.value,
         }
       );
+      localStorage.setItem("accesstoken", res.data.accesstoken);
       localStorage.setItem("id", res.data.id);
       swal({
         title: "Success!",
@@ -44,7 +84,6 @@ export default function Login() {
         },
       });
     } catch (err) {
-      console.log(err)
       swal({
         title: "Warning!",
         text: "Login Unsuccessfull !",
@@ -56,6 +95,7 @@ export default function Login() {
   };
   return (
     <MDBContainer className="my-5">
+      <form onSubmit={handleSubmit}> 
       <MDBCard>
         <MDBRow className="g-0 d-flex align-items-center">
           <MDBCol md="4">
@@ -72,27 +112,27 @@ export default function Login() {
               <h2>Login Now</h2>
               <br></br>
               <div className="regui">
-              <div className="name">
-                <label>Username</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="formControlLg"
-                  placeholder="Enter your username"
-                  ref={userRef}
-                ></input>
+                <div className="name">
+                  <label>Username</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="formControlLg"
+                    placeholder="Enter your username"
+                    ref={userRef}
+                  ></input>
+                </div>
+                <div className="name">
+                  <label>Password</label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="formControlLg"
+                    placeholder="Enter your password"
+                    ref={passwordRef}
+                  ></input>
+                </div>
               </div>
-              <div className="name">
-                <label>Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="formControlLg"
-                  placeholder="Enter your password"
-                  ref={passwordRef}
-                ></input>
-              </div>
-            </div>
               {/* <MDBInput
                 wrapperClass="mb-4"
                 label="Username"
@@ -118,13 +158,14 @@ export default function Login() {
                 </Link>
               </p>
 
-              <MDBBtn className="mb-4 w-100" onClick={handleSubmit}>
+              <MDBBtn className="mb-4 w-100">
                 Sign in
               </MDBBtn>
             </MDBCardBody>
           </MDBCol>
         </MDBRow>
       </MDBCard>
+      </form>
     </MDBContainer>
   );
 }
