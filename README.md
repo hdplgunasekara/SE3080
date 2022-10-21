@@ -4,7 +4,7 @@
 ### Group Leader - Group Leader - IT20648954 - Mr. H.D.P.L Gunasekara
 ### Member 2 -IT20648190 - Mr. M.N.T Ahmed
 ### Member 3 - IT20647964 - Ms. R.G.I Navodya
-### Member 4 - IT20647964 - Ms. R.G.I Navodya
+### Member 4 - IT20644680 - Ms. M.A.M Aathif
 ## Project Description:
 We are going to make a full functional web application for library. We hope to make this application make things easier for the readers. 
 There are 4 main functions in this app, they are article management, user management, book and publisher management. 
