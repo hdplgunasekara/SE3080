@@ -6,7 +6,7 @@
 ### Member 3 - IT20647964 - Ms. R.G.I Navodya
 ### Member 4 - IT20647964 - Ms. R.G.I Navodya
 ## Project Description:
-We are going to make a full functional web application for library. We hope to make this application make things easier for the customer. 
+We are going to make a full functional web application for library. We hope to make this application make things easier for the readers. 
 There are 4 main functions in this app, they are article management, user management, book and publisher management. 
 We hope to use MERN STACK to develop our project, MERN stack is a JavaScript software stack for building dynamic web applications. 
 Each functions had full crud operations.
