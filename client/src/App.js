@@ -9,6 +9,7 @@ import Register from "./pages/register";
 import ViewUsers from "./pages/user/admin/ViewUsers";
 import UserDashboard from "./pages/user/admin/UserDashboard";
 
+
 function App() {
   return (
     <div className="App">
@@ -25,6 +26,7 @@ function App() {
           <Route path="/register" element={<Register/>} />
           <Route path="/userdash" element={<UserDashboard/>} />
           <Route path="/viewuser" element={<ViewUsers/>} />
+        
 
         </Routes>
       </BrowserRouter>
