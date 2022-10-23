@@ -8,6 +8,8 @@ import ArticleList from "../src/pages/article/user/ArticleList";
 import AddArticle from "../src/pages/article/user/AddArticle";
 import ArticleSearch from "../src/pages/article/user/ArticleSearch";
 import UserDashboard from "../src/pages/user/Dashboard";
+import PublisherDashboard from "./pages/publisher/PublisherDashboard";
+import ViewPublishers from "./pages/publisher/ViewPublishers";
 
 //aathif 
 import Home from "./pages/home";
@@ -33,6 +35,7 @@ function App() {
         <Route exact path="/article/add" element={<AddArticle />} />
         <Route exact path="/article/search/:id" element={<ArticleSearch />} />
         <Route exact path="/user" element={<UserDashboard />} />
+
         
         {/* Aathif */}
         <Route path="/home" element={<Home/>} />
@@ -41,6 +44,12 @@ function App() {
           <Route path="/userdash" element={<UserDashboardd/>} />
           <Route path="/viewuser" element={<ViewUsers/>} />
           <Route path="/profile" element={<Profile/>} />
+
+
+        {/* Inuri */}
+        <Route path="/publisherdash" element={<PublisherDashboard/>} />
+        <Route path="/viewpublisher" element={<ViewPublishers/>} />
+
         </Routes>
       </BrowserRouter>
     </div>

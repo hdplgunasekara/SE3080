@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom'
 import TopNav from '../../components/admin/topNav'
 import SideNav from '../../components/admin/sideNav'
 import BookReportModal from '../../components/modals/bookmodals/BookReportModal'
+
+import PublisherReportModal from '../../components/modals/publishermodals/PublisherReportModal'
+
 import ArticleReportModal from '../../components/modals/articlemodals/articleReportModel'
+
 
 export default function Dashboard() {
   return (
@@ -54,7 +58,7 @@ export default function Dashboard() {
                         {/* <div className="col-md-1"></div> */}
                         <div className="col-md-3 rounded dashpublisher">
                         <p style={{fontSize: "20px"}}>Publishers</p> 
-                            <button className="btn btn-light btn-sm">Generate</button>
+                            <PublisherReportModal/>
                         </div>
                         <div className="col-md-1"></div>
                     </div>

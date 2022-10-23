@@ -24,7 +24,7 @@ export default function ViewBooks() {
       <TopNav />
       <SideNav />
       <br />
-
+{/* //dfssdfgsd */}
       <br />
       <div className="row">
         <div className="col-md-3"></div>
@@ -36,7 +36,9 @@ export default function ViewBooks() {
                 <th scope="col">Author</th>
                 <th scope="col">Category</th>
                 <th scope="col">Publisher</th>
-                <th className="text-center" scope="col">Action</th>
+                <th className="text-center" scope="col">
+                  Action
+                </th>
               </tr>
             </thead>
             <tbody>

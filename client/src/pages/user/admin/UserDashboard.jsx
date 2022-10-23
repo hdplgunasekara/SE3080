@@ -15,9 +15,11 @@ export default function UserDashboard() {
 
       <div className="row text-center inline">
         <div className="col-md-2"></div>
+
         <Search />
         <br />
         <br />
+
         <div className="col-md-2"></div>
         <div className="col-md-9 d-flex justify-content-center">
           <Link to="/viewuser" className="btn btn-primary btn-lg">
