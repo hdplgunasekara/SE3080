@@ -28,7 +28,7 @@ export default function DelPublisherModal(props) {
     const DeleteShow = () => {
         console.log(props._id)
         setPublisherID(props._id)
-        axios.get("http://localhost:8090/publisher/" + props.puid).then(function (response) {
+        axios.get("http://localhost:8090/api/publisher/" + props.puid).then(function (response) {
             setpucompany_name(response.data['company_name']);
             setpucontact_person(response.data['contact_person']);
             setpuemail(response.data['email']);
@@ -47,7 +47,7 @@ export default function DelPublisherModal(props) {
 
     function submitForm(e) {
         e.preventDefault();
-        axios.delete("http://localhost:8090/publisher/deletepublisher/" + props.puid)
+        axios.delete("http://localhost:8090/api/publisher/deletepublisher/" + props.puid)
             .then(function (response) {
                 setShow(false);
                 swal({ text: "Publisher Successfully Deleted", icon: "success", button: "Okay!" }).then((value) => {

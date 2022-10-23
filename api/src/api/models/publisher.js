@@ -2,11 +2,6 @@ const mongoose =require("mongoose");
 
 const PublisherSchema = new mongoose.Schema({
 
-    pubID: {
-        type: String,
-        required: true,
-        unique: true
-    },
 
     company_name : {
         type : String,

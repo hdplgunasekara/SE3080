@@ -36,7 +36,7 @@ export default function AddPublisherModal() {
     }
     else{
     console.log(publisherData);
-    axios.post('http://localhost:8090/publisher/addpublisher', publisherData).then(function (res) {
+    axios.post('http://localhost:8090/api/publisher/addpublisher', publisherData).then(function (res) {
       
       console.log(res);
       setPUName("");
@@ -45,7 +45,7 @@ export default function AddPublisherModal() {
       setPUNumber("");
       setPUAddress("");
       swal({ text: "Publisher Successfully Added", icon: "success", button: "Okay!"}).then((value) => {
-        window.location = '/publisherdashboard'; 
+        window.location = '/publisherdash'; 
      });
     })
       .catch(function (error) {

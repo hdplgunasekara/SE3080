@@ -38,7 +38,7 @@ const SideNav = () => {
                   {" "}
                   User Management{" "}
                 </a>
-                <a href="#" className="nav-item nav-link dash-link">
+                <a href="/publisherdash" className="nav-item nav-link dash-link">
                   {" "}
                   Publisher Management{" "}
                 </a>

@@ -29,7 +29,7 @@ export default function UpdPublisherModal(props) {
         console.log(props._id)
         setPublisherID(props._id)
     
-        axios.get("http://localhost:8090/publisher/" + props.puid).then(function (response) {
+        axios.get("http://localhost:8090/api/publisher/" + props.puid).then(function (response) {
             setpucompany_name(response.data['company_name']);
             setpucontact_person(response.data['contact_person']);
             setpuemail(response.data['email']);
@@ -51,7 +51,7 @@ export default function UpdPublisherModal(props) {
           swal(" Fields Cannot be empty !", "Please fill all the data!", "error");
         }
         else{
-        axios.put("http://localhost:8090/publisher/updatepublisher/" +  props.puid,publisherData)
+        axios.put("http://localhost:8090/api/publisher/updatepublisher/" +  props.puid,publisherData)
             .then(function (response) {
                 setpucompany_name('');
                 setpucontact_person('');
