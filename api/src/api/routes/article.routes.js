@@ -37,7 +37,7 @@ router.post("/add", async (req, res) => {
                 title,
                 description,
                 userid:"1",
-                status:"Pending",
+                status:"Active",
                 image:image.base64
         })
 
@@ -77,7 +77,7 @@ router.get("/list",async (req, res) => {
         const limit = parseInt(size);
         const skip = (page-1)*size;
         
-        const articles = await Article.find({status:'Pending'}).limit(limit).skip(skip);
+        const articles = await Article.find({status:'Active'}).limit(limit).skip(skip);
         
         res.json(articles)
         
@@ -91,7 +91,29 @@ router.get("/list",async (req, res) => {
 
 //fetch article end
 
+router.get("/all",async (req, res) => {
+
+	// Article.find({status:"Pending"}).then((articles)=>{
+    //     res.json(articles)
+    // }).catch((err)=>{
+    //     res.status(500).send({ message: "Server Error" });
+    // })
+
+    try {
+	           
+        const articles = await Article.find();
+        res.json(articles)
+        
+
+	} catch (error) {
+		res.sendStatus(500).send({ message: "Internal Server Error" });
+	}
+});
+
+
+
 //search article start
+
 
 router.get("/search",async (req, res) => {
     var search = new RegExp(req.query.search);
@@ -110,7 +132,7 @@ router.get("/search",async (req, res) => {
         const limit = parseInt(size);
         const skip = (page-1)*size;
         // const count=  await Note.find({status : 'Active', userid:userid}).count();
-        const articles = await Article.find({title: search}).limit(limit).skip(skip);
+        const articles = await Article.find({title: search,status : 'Active'}).limit(limit).skip(skip);
         
         res.json(articles)
 
@@ -145,7 +167,7 @@ router.put("/update/:id",async(req ,res)=>{
     const updateArticle={
         title,
         description,
-        image:image.base64
+        
 
         
     }

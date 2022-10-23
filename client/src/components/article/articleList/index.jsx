@@ -26,7 +26,7 @@ const ArticleList= ()=>{
         const res= await fetch(
             'http://127.0.0.1:8090/article/list' );
         const data = await res.json();
-        setpageCount(5);
+        setpageCount(2);
         setItems(data);
         setCount(data.length)
         setIsLoading(false)
