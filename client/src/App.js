@@ -11,6 +11,13 @@ import UserDashboard from "../src/pages/user/Dashboard";
 import PublisherDashboard from "./pages/publisher/PublisherDashboard";
 import ViewPublishers from "./pages/publisher/ViewPublishers";
 
+//aathif 
+import Home from "./pages/home";
+import Login from "./pages/login";
+import Register from "./pages/register";
+import ViewUsers from "./pages/user/admin/ViewUsers";
+import UserDashboardd from "./pages/user/admin/UserDashboard";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -28,6 +35,16 @@ function App() {
         <Route exact path="/article/add" element={<AddArticle />} />
         <Route exact path="/article/search/:id" element={<ArticleSearch />} />
         <Route exact path="/user" element={<UserDashboard />} />
+
+        
+        {/* Aathif */}
+        <Route path="/home" element={<Home/>} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/register" element={<Register/>} />
+          <Route path="/userdash" element={<UserDashboardd/>} />
+          <Route path="/viewuser" element={<ViewUsers/>} />
+          <Route path="/profile" element={<Profile/>} />
+
 
         {/* Inuri */}
         <Route path="/publisherdash" element={<PublisherDashboard/>} />
