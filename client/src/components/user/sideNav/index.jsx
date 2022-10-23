@@ -18,7 +18,8 @@ const SideNav = ()=>{
   <a href="/user" className="item"><i class="fa fa-fw fa-home"></i> Dashboard</a>
   <a href="/article/list" className="item"><i class="fa fa-fw fa-wrench"></i> Article List</a>
   <a href="/article/add" className="item" ><i class="fa fa-fw fa-user"></i> Add Article</a>
-  <a href="#contact" className="item"><i class="fa fa-fw fa-envelope"></i>Support</a>
+  <a href="/profile" className="item"><i class="fa fa-fw fa-envelope"></i>Profile</a>
+  <a href="/home" className="item"><i class="fa fa-fw fa-envelope"></i>Logout</a>
   </div>
 </div>
 

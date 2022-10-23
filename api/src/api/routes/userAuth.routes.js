@@ -8,7 +8,7 @@ router.post("/register", async (req, res) => {
   const salt = await bcrypt.genSalt(10);
   const hashedPass = await bcrypt.hash(req.body.password, salt);
   const newUser = new user({
-      student_id : req.body.student_id,
+      user_id : req.body.user_id,
       name : req.body.name,
       dob : req.body.dob,
       gender : req.body.gender,
@@ -38,7 +38,7 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const users = await user.findOne({ username: req.body.username });
-    !user && res.status(400).json("Wrong credentials!");
+    !users && res.status(400).json("Wrong credentials!");
 
     const validated = await bcrypt.compare(req.body.password, users.password);
     !validated && res.status(400).json("Wrong credentials!");
